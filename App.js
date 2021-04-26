@@ -6,6 +6,10 @@ import { Feather } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import Home from './NavigationTab/Home'
 import Menu from './NavigationTab/Menu'
+import Panier from './NavigationTab/Cart'
+import { AntDesign } from '@expo/vector-icons';
+
+
 
 
 
@@ -22,6 +26,14 @@ function MenuScreen() {
   return (
     <View>
       <Menu/>
+    </View>
+  );
+}
+
+function PanierScreen() {
+  return (
+    <View>
+      <Panier/>
     </View>
   );
 }
@@ -45,7 +57,10 @@ export default function App() {
        <Tab.Screen
         name="restaurant-menu" component={MenuScreen} />
 
-        
+<Tab.Screen
+     
+          
+   name="Cart" component={PanierScreen} />
      
     </Tab.Navigator>
   </NavigationContainer>

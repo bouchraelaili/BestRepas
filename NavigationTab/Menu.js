@@ -1,6 +1,6 @@
 
 import React from 'react'
-import {StyleSheet, View, Text, Image, TouchableOpacity, FlatList, ScrollView} from 'react-native'
+import {StyleSheet, View, Text, Image, TouchableOpacity, FlatList, ScrollView,Alert} from 'react-native'
 import {Header} from 'native-base';
 
 
@@ -48,32 +48,6 @@ const DATA = [
 ];
 
 
-
-const Item = ({title, price,desc, image}) => (
-  <View style={styles.card}>
-  <View >
-       <Image source={image} style={{width: 'auto', marginBottom: 20, height:250, borderRadius: 50 }}/>
-     </View>
-     <View style={{flexDirection: 'row', justifyContent:'space-evenly'}}>
-       <Text style={styles.title}>{title}</Text>
-       <Text style={styles.price}>{price} DH</Text>
-
-     </View>
-     <View style={{flexDirection: 'row', justifyContent:'flex-start'}}>
-     <Text style={styles.desc}>{desc}</Text>
-     </View>
-
-     <View>
-     <TouchableOpacity
-      style={styles.button}
-    >
-      <Text style={styles.textButton}>Add To Cart</Text>
-    </TouchableOpacity>
-     </View>
-</View>
-)
-
-
 export default function Menu() {
 
   const renderItem = ({item}) => (
@@ -107,6 +81,78 @@ export default function Menu() {
   )
 }
 
+
+const createTwoButtonAlert = () =>
+Alert.alert(
+  "Cart",
+  "if you want add to cart??",
+  [
+    {
+      text: "Cancel",
+      onPress: () => console.log("Cancel Pressed"),
+      style: "cancel"
+    },
+    { text: "OK", onPress: () => console.log(DATA) }
+  ]
+);
+
+const Item = ({title, price,desc, image}) => (
+  <View style={styles.card}>
+  <View >
+       <Image source={image} style={{width: 'auto', marginBottom: 20, height:250, borderRadius: 50 }}/>
+     </View>
+     <View style={{flexDirection: 'row', justifyContent:'space-evenly'}}>
+       <Text style={styles.title}>{title}</Text>
+       <Text style={styles.price}>{price} DH</Text>
+
+     </View>
+     <View style={{flexDirection: 'row', justifyContent:'flex-start'}}>
+     <Text style={styles.desc}>{desc}</Text>
+     </View>
+
+     <View>
+     <TouchableOpacity
+     onPress={createTwoButtonAlert} 
+      style={styles.button}
+    >
+      <Text style={styles.textButton}>Add To Cart</Text>
+    </TouchableOpacity>
+     </View>
+</View>
+)
+
+
+
+
+// function onClickAddCart(data) {
+//        console.log(data)
+
+//         const itemcart = {
+//           food: data,
+//           quantity:  1,
+//           price: data.price
+//         }
+     
+//         AsyncStorage.getItem('item').then((dataCart)=>{
+//             console.log(dataCart)
+//             if (dataCart !== null) {
+//               // We have data!!
+//               const cart = JSON.parse(dataCart)
+//               cart.push(itemcart)
+//               AsyncStorage.setItem('cart',JSON.stringify(cart));
+//             }
+//             else{
+//               const cart  = []
+//               cart.push(itemcart)
+//               AsyncStorage.setItem('cart',JSON.stringify(cart));
+//             }
+//             alert("Add Cart")
+//           })
+//           .catch((err)=>{
+//             alert(err)
+//           })
+//       }
+    
 
 
 const styles = StyleSheet.create({
