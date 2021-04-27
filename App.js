@@ -4,9 +4,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Feather } from '@expo/vector-icons'; 
 import { MaterialIcons } from '@expo/vector-icons';
-import Home from './NavigationTab/Home'
-import Menu from './NavigationTab/Menu'
-import Panier from './NavigationTab/Cart'
+import Home from './Component/Home'
+import Menu from './Component/Menu'
+import Cart from './Component/Cart'
 import { AntDesign } from '@expo/vector-icons';
 
 
@@ -30,10 +30,10 @@ function MenuScreen() {
   );
 }
 
-function PanierScreen() {
+function CartScreen() {
   return (
     <View>
-      <Panier/>
+      <Cart/>
     </View>
   );
 }
@@ -60,7 +60,7 @@ export default function App() {
 <Tab.Screen
      
           
-   name="Cart" component={PanierScreen} />
+   name="Cart" component={CartScreen} />
      
     </Tab.Navigator>
   </NavigationContainer>
@@ -71,7 +71,4 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
- 
 
-});
